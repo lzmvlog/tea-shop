@@ -1,16 +1,18 @@
-package top.lzmvlog.shop.gateway;
+package top.lzmvlog.shop.goods;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
+/**
+ * @author ShaoJie zhang1591313226@163.com
+ * @Date 2021年02月20日 18:01
+ * @Description:
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class NacosGatewayApplication {
-
+public class GoodsApplication {
     public static void main(String[] args) {
-        SpringApplication.run(NacosGatewayApplication.class, args);
+        SpringApplication.run(GoodsApplication.class, args);
     }
-
 }

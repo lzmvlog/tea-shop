@@ -9,6 +9,9 @@
 1. `nacos-getway`网关
 2. `common`相关共同依赖
 3. `business`业务实现
+   
+    `goods`服务为商品服务
+   
     后续服务创建在当前文件下
 
 
