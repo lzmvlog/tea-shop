@@ -5,6 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>nacos-gateway</module>
+        <module>common</module>
+        <module>business</module>
     </modules>
 
     <parent>
@@ -69,15 +71,6 @@
             <version>0.9.0.RELEASE</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
     <!--注意：这里必须要添加，否则各种依赖有问题-->
     <repositories>

@@ -1,3 +1,6 @@
+#server:
+#  port: 8090
+#
 #spring:
 #  application:
 #    # 应用名称
@@ -32,9 +35,6 @@
 #          uri: lb://nacos-consumer-feign
 #          predicates:
 #            - Method=GET,POST
-#
-#server:
-#  port: 9000
 #
 ## 目前无效
 #feign:

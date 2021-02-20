@@ -1,15 +1,20 @@
-# spring-cloud-alibaba
+# tea-shop
 
 #### 介绍
-nacos + feign + gateway 
+茶叶商城
+
+采用微服务架构设计实现商城系统
 
 #### 软件架构
-软件架构说明
+1. `nacos-getway`网关
+2. `common`相关共同依赖
+3. `business`业务实现
+    后续服务创建在当前文件下
 
 
 #### 安装教程
 
-1.  xxxx
+1.  先启动`nacos-getway`用与注册服务，通过网关请求具体业务系统
 2.  xxxx
 3.  xxxx
 
@@ -25,13 +30,3 @@ nacos + feign + gateway
 2.  新建 Feat_xxx 分支
 3.  提交代码
 4.  新建 Pull Request
-
-
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
