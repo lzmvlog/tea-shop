@@ -8,9 +8,10 @@
 #### 软件架构
 1. `nacos-getway`网关
 2. `common`相关共同依赖
-3. `business`业务实现
-   
-    `goods`服务为商品服务
+3. `business`业务实现    
+   `goods`服务为商品服务   
+   `customer`服务为用户服务    
+   `order`服务为订单服务
    
     后续服务创建在当前文件下
 

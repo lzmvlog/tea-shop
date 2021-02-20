@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>goods</module>
+        <module>customer</module>
+        <module>order</module>
     </modules>
 
     <properties>

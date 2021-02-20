@@ -31,7 +31,6 @@
         <spring-cloud-alibaba.version>0.9.1.RELEASE</spring-cloud-alibaba.version>
     </properties>
 
-
     <dependencyManagement>
         <dependencies>
             <dependency>
