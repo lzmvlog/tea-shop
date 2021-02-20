@@ -12,9 +12,9 @@
     <artifactId>business</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>goods</module>
-        <module>customer</module>
-        <module>order</module>
+        <module>shop-customer</module>
+        <module>shop-goods</module>
+        <module>shop-order</module>
     </modules>
 
     <properties>
