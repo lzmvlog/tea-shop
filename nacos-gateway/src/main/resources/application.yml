@@ -6,10 +6,15 @@
 #    # 应用名称
 #    name: spring-gateway
 #  cloud:
-#    # 使用 Naoos 作为服务注册发现
+#    # 使用 Nacos 作为服务注册发现
 #    nacos:
 #      discovery:
 #        server-addr: 127.0.0.1:8848
+#        # 发现 Nacos 服务
+#      gateway:
+#        discovery:
+#          locator:
+#            enabled: true
 #    # 使用 Sentinel 作为熔断器
 #    #    sentinel:
 #    #      transport:
