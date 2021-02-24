@@ -17,7 +17,6 @@ import top.lzmvlog.shop.order.service.OrdersService;
  */
 @RestController
 @Slf4j
-//@AllArgsConstructor
 @RequestMapping("/order")
 public class OrdersController {
 
