@@ -2,18 +2,17 @@ package top.lzmvlog.common.result;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import top.lzmvlog.common.constant.CommonConstant;
 
 /**
- * 数据返回结构体
+ * 响应数据结构体
  *
  * @author zhang1591313226@163.com
  * @since 2021-02-23 16:14
  */
 @Data
 @Accessors(chain = true)
-public class R {
-
-    private static final Integer SUCCESS = 200;
+public class R<T> {
 
     /**
      * 响应码
@@ -23,49 +22,52 @@ public class R {
     /**
      * 响应数据
      */
-    private Object data;
+    private T data;
 
     /**
      * 响应信息
      */
     private String msg;
 
+
     /**
-     * 成功响应
+     * 成功响应数据
      *
-     * @return
+     * @param data 需要返回的数据
+     * @return 数据
      */
-    public static R ok() {
-        return new R().setCode(SUCCESS);
+    public static <T> R<T> ok(T data) {
+        return new R<T>(CommonConstant.SUCCESS, data);
     }
 
     /**
-     * 响应数据
+     * 失败响应信息
      *
-     * @param data 数据信息
-     * @return
+     * @param msg 需要返回的信息
+     * @return 信息
      */
-    public static R ok(Object data) {
-        return new R().setCode(SUCCESS).setData(data);
+    public static <T> R<T> fail(String msg) {
+        return new R<T>(CommonConstant.FAIL, msg);
     }
 
     /**
-     * bool信息响应
+     * 判断需要响应的数据
      *
-     * @param bool
-     * @return
+     * @param bool 需要判断的数据
+     * @return 成功 || 失败
      */
-    public static R bool(boolean bool) {
-        return bool ? R.ok() : R.fail("操作失败, 请重试!");
+    public static R<Boolean> bool(Boolean bool) {
+        return bool ? new R<Boolean>(CommonConstant.SUCCESS, "") :
+                new R<Boolean>(CommonConstant.FAIL, CommonConstant.FAIL_MSG_ONE);
     }
 
-    /**
-     * 响应失败信息
-     *
-     * @param message
-     * @return
-     */
-    private static R fail(String message) {
-        return new R().setMsg(message);
+    private R(Integer code, T data) {
+        this.code = code;
+        this.data = data;
+    }
+
+    private R(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
     }
 }
