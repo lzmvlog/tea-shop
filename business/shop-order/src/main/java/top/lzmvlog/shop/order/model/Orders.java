@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
  * @since 2021-02-24 10:14
  */
 @Data
-@TableName("order")
-public class Order {
+@TableName("orders")
+public class Orders {
 
     private static final long serialVersionUID = 1L;
 

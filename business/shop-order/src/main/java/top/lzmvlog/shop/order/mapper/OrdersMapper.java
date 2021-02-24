@@ -1,7 +1,7 @@
 package top.lzmvlog.shop.order.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import top.lzmvlog.shop.order.model.Order;
+import top.lzmvlog.shop.order.model.Orders;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @since 2021-02-24
 */
 @Mapper
-public interface OrderMapper extends BaseMapper<Order> {
+public interface OrdersMapper extends BaseMapper<Orders> {
 
 }

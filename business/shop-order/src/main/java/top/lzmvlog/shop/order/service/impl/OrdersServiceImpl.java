@@ -2,9 +2,9 @@ package top.lzmvlog.shop.order.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-import top.lzmvlog.shop.order.mapper.OrderMapper;
-import top.lzmvlog.shop.order.model.Order;
-import top.lzmvlog.shop.order.service.OrderService;
+import top.lzmvlog.shop.order.mapper.OrdersMapper;
+import top.lzmvlog.shop.order.model.Orders;
+import top.lzmvlog.shop.order.service.OrdersService;
 
 /**
  * order 服务实现类
@@ -13,6 +13,6 @@ import top.lzmvlog.shop.order.service.OrderService;
  * @since 2021-02-24
  */
 @Service
-public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
+public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> implements OrdersService {
 
 }

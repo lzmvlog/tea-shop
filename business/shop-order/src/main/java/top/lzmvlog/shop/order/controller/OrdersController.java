@@ -6,8 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.lzmvlog.common.result.R;
-import top.lzmvlog.shop.order.model.Order;
-import top.lzmvlog.shop.order.service.OrderService;
+import top.lzmvlog.shop.order.model.Orders;
+import top.lzmvlog.shop.order.service.OrdersService;
 
 /**
  * order 前端控制器
@@ -19,24 +19,24 @@ import top.lzmvlog.shop.order.service.OrderService;
 @Slf4j
 //@AllArgsConstructor
 @RequestMapping("/order")
-public class OrderController {
+public class OrdersController {
 
     @Autowired
-    public OrderService orderservice;
+    public OrdersService orderservice;
 
     /**
-     * 新增 order
+     * 新增 orders
      *
-     * @param order
+     * @param orders
      * @return
      */
     @PutMapping("save")
-    public R save(@RequestBody Order order) {
-        return R.bool(orderservice.save(order));
+    public R save(@RequestBody Orders orders) {
+        return R.bool(orderservice.save(orders));
     }
 
     /**
-     * 删除 order
+     * 删除 orders
      *
      * @param id
      * @return
@@ -47,25 +47,25 @@ public class OrderController {
     }
 
     /**
-     * 修改 order
+     * 修改 orders
      *
-     * @param order
+     * @param orders
      * @return
      */
     @PostMapping("update")
-    public R update(@RequestBody Order order) {
-        return R.bool(orderservice.updateById(order));
+    public R update(@RequestBody Orders orders) {
+        return R.bool(orderservice.updateById(orders));
     }
 
     /**
-     * 查询 order
+     * 查询 orders
      *
-     * @param order
+     * @param orders
      * @return
      */
     @PostMapping("select")
-    public R select(@RequestBody Order order, Page<Order> page) {
-        return R.ok(orderservice.page(page, Wrappers.<Order>query(order)));
+    public R select(@RequestBody Orders orders, Page<Orders> page) {
+        return R.ok(orderservice.page(page, Wrappers.<Orders>query(orders)));
     }
 
 }

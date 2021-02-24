@@ -2,12 +2,17 @@ package ${package.Controller};
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import top.lzmvlog.shop.order.service.${table.serviceName};
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 import top.lzmvlog.common.result.R;
-import top.lzmvlog.shop.order.model.${entity};
+import top.lzmvlog.shop.orders.model.Orders;
+import top.lzmvlog.shop.orders.service.${table.serviceName};
+import top.lzmvlog.common.result.R;
+import top.lzmvlog.shop.orders.model.${entity};
+import org.springframework.data.domain.Page;
 #if(${restControllerStyle})
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 #else
 import org.springframework.stereotype.Controller;
 #end
@@ -24,7 +29,6 @@ import ${superControllerClassPackage};
 #if(${restControllerStyle})
 @RestController
 @Slf4j
-@AllArgsConstructor
 #else
 @Controller
 #end
@@ -40,50 +44,51 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
 #end
 
-    public final ${table.serviceName} ${table.name}service;
+    @Autowired
+    public ${table.serviceName} ${table.name}Service;
 
     /**
-    * 新增 ${table.name}
-    *
-    * @param ${table.name}
-    * @return
-    */
+     * 新增 ${table.name}
+     *
+     * @param ${table.name}
+     * @return
+     */
     @PutMapping("save")
     public R save(@RequestBody ${entity} ${table.name}) {
-        return R.bool(${table.name}service.save(${table.name}));
+        return R.bool(${table.name}Service.save(${table.name}));
     }
 
     /**
-    * 删除 ${table.name}
-    *
-    * @param id
-    * @return
-    */
+     * 删除 ${table.name}
+     *
+     * @param id
+     * @return
+     */
     @DeleteMapping("delete/{id}")
     public R delete(@PathVariable(value = "id") String id) {
-        return R.bool(${table.name}service.removeById(id));
+        return R.bool(${table.name}Service.removeById(id));
     }
 
     /**
-    * 修改 ${table.name}
-    *
-    * @param ${table.name}
-    * @return
-    */
+     * 修改 ${table.name}
+     *
+     * @param ${table.name}
+     * @return
+     */
     @PostMapping("update")
     public R update(@RequestBody ${entity} ${table.name}) {
-        return R.bool(${table.name}service.updateById(order));
+        return R.bool(${table.name}Service.updateById(${table.name}));
     }
 
     /**
-    * 查询 order
-    *
-    * @param ${table.name}
-    * @return
-    */
+     * 查询 orders
+     *
+     * @param ${table.name}
+     * @return
+     */
     @PostMapping("select")
     public R select(@RequestBody ${entity} ${table.name}, Page<${entity}> page) {
-        return R.ok(${table.name}service.page(page, Wrappers.<${entity}>lambdaQuery(${table.name})));
+        return R.ok(${table.name}Service.page(page, Wrappers.<${entity}>lambdaQuery(${table.name})));
     }
 
 }
