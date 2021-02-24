@@ -29,7 +29,6 @@ public class R<T> {
      */
     private String msg;
 
-
     /**
      * 成功响应数据
      *
