@@ -64,8 +64,8 @@ public class CodeGenerator {
         templateConfig.setService("/templates/service");
         templateConfig.setServiceImpl("/templates/serviceimpl");
 
-        // 每次生成之前都需要确定是哪一个服务下面的信息
-        String service = "goods";
+        // 每次生成之前都需要确定是哪一个服务下面的信息!!!!!-----------------------------------------------------很重要
+        String service = "customer";
         //4. 包名策略配置
         PackageConfig pkConfig = new PackageConfig();
         pkConfig.setParent("top.lzmvlog.shop." + service)

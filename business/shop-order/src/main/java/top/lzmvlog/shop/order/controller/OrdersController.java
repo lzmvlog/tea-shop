@@ -21,7 +21,7 @@ import top.lzmvlog.shop.order.service.OrdersService;
 public class OrdersController {
 
     @Autowired
-    public OrdersService orderservice;
+    public OrdersService orderService;
 
     /**
      * 新增 orders
@@ -31,7 +31,7 @@ public class OrdersController {
      */
     @PutMapping("save")
     public R save(@RequestBody Orders orders) {
-        return R.bool(orderservice.save(orders));
+        return R.bool(orderService.save(orders));
     }
 
     /**
@@ -42,7 +42,7 @@ public class OrdersController {
      */
     @DeleteMapping("delete/{id}")
     public R delete(@PathVariable(value = "id") String id) {
-        return R.bool(orderservice.removeById(id));
+        return R.bool(orderService.removeById(id));
     }
 
     /**
@@ -53,7 +53,7 @@ public class OrdersController {
      */
     @PostMapping("update")
     public R update(@RequestBody Orders orders) {
-        return R.bool(orderservice.updateById(orders));
+        return R.bool(orderService.updateById(orders));
     }
 
     /**
@@ -64,7 +64,7 @@ public class OrdersController {
      */
     @PostMapping("select")
     public R select(@RequestBody Orders orders, Page<Orders> page) {
-        return R.ok(orderservice.page(page, Wrappers.<Orders>query(orders)));
+        return R.ok(orderService.page(page, Wrappers.<Orders>query(orders)));
     }
 
 }

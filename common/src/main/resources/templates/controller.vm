@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
-import ${package.Entity}.service.${table.serviceName};
+import ${package.Service}.${table.serviceName};
 import top.lzmvlog.common.result.R;
-import ${package.Entity}.${entity}
+import ${package.Entity}.${entity};
 import org.springframework.data.domain.Page;
 #if(${restControllerStyle})
 import org.springframework.web.bind.annotation.*;
