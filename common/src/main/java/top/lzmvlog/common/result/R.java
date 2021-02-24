@@ -1,6 +1,7 @@
 package top.lzmvlog.common.result;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 数据返回结构体
@@ -9,38 +10,62 @@ import lombok.Data;
  * @since 2021-02-23 16:14
  */
 @Data
+@Accessors(chain = true)
 public class R {
+
+    private static final Integer SUCCESS = 200;
 
     /**
      * 响应码
      */
-    private Integer code = 200;
+    private Integer code;
 
     /**
      * 响应数据
      */
     private Object data;
 
-    private R() {
-        this.code = 200;
+    /**
+     * 响应信息
+     */
+    private String msg;
+
+    /**
+     * 成功响应
+     *
+     * @return
+     */
+    public static R ok() {
+        return new R().setCode(SUCCESS);
     }
 
     /**
-     * 返回状态和数据
+     * 响应数据
      *
-     * @param code 响应信息
-     * @param data 响应数据
+     * @param data 数据信息
+     * @return
      */
-    public R(Integer code, Object data) {
-        this.code = code;
-        this.data = data;
-    }
-
-    public static R ok() {
-        return new R();
-    }
-
     public static R ok(Object data) {
-        return new R(200, data);
+        return new R().setCode(SUCCESS).setData(data);
+    }
+
+    /**
+     * bool信息响应
+     *
+     * @param bool
+     * @return
+     */
+    public static R bool(boolean bool) {
+        return bool ? R.ok() : R.fail("操作失败, 请重试!");
+    }
+
+    /**
+     * 响应失败信息
+     *
+     * @param message
+     * @return
+     */
+    private static R fail(String message) {
+        return new R().setMsg(message);
     }
 }

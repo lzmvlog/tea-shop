@@ -1,0 +1,90 @@
+package ${package.Controller};
+
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestMapping;
+import top.lzmvlog.shop.order.service.${table.serviceName};
+import top.lzmvlog.common.result.R;
+import top.lzmvlog.shop.order.model.${entity};
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+
+/**
+  * $!{table.name} 前端控制器
+  *
+  * @author ${author}
+  * @since ${date}
+  */
+#if(${restControllerStyle})
+@RestController
+@Slf4j
+@AllArgsConstructor
+#else
+@Controller
+#end
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+#if(${kotlin})
+
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+    public final ${table.serviceName} ${table.name}service;
+
+    /**
+    * 新增 ${table.name}
+    *
+    * @param ${table.name}
+    * @return
+    */
+    @PutMapping("save")
+    public R save(@RequestBody ${entity} ${table.name}) {
+        return R.bool(${table.name}service.save(${table.name}));
+    }
+
+    /**
+    * 删除 ${table.name}
+    *
+    * @param id
+    * @return
+    */
+    @DeleteMapping("delete/{id}")
+    public R delete(@PathVariable(value = "id") String id) {
+        return R.bool(${table.name}service.removeById(id));
+    }
+
+    /**
+    * 修改 ${table.name}
+    *
+    * @param ${table.name}
+    * @return
+    */
+    @PostMapping("update")
+    public R update(@RequestBody ${entity} ${table.name}) {
+        return R.bool(${table.name}service.updateById(order));
+    }
+
+    /**
+    * 查询 order
+    *
+    * @param ${table.name}
+    * @return
+    */
+    @PostMapping("select")
+    public R select(@RequestBody ${entity} ${table.name}, Page<${entity}> page) {
+        return R.ok(${table.name}service.page(page, Wrappers.<${entity}>lambdaQuery(${table.name})));
+    }
+
+}
+#end
