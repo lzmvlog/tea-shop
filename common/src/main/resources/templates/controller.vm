@@ -53,6 +53,7 @@ public class ${table.controllerName} {
      */
     @PutMapping("save")
     public R save(@RequestBody ${entity} ${table.name}) {
+        ${table.name}.setCreateTime(LocalDateTime.now());
         return R.bool(${table.name}Service.save(${table.name}));
     }
 

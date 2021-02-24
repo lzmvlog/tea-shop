@@ -5,9 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import top.lzmvlog.common.enumutil.OrdersPayEnum;
 import top.lzmvlog.common.result.R;
 import top.lzmvlog.shop.order.model.Orders;
 import top.lzmvlog.shop.order.service.OrdersService;
+
+import java.time.LocalDateTime;
 
 /**
  * order 前端控制器
@@ -31,6 +34,7 @@ public class OrdersController {
      */
     @PutMapping("save")
     public R save(@RequestBody Orders orders) {
+        orders.setCreateTime(LocalDateTime.now());
         return R.bool(orderService.save(orders));
     }
 

@@ -9,12 +9,14 @@ import top.lzmvlog.common.result.R;
 import top.lzmvlog.shop.customer.model.Customer;
 import top.lzmvlog.shop.customer.service.CustomerService;
 
+import java.time.LocalDateTime;
+
 /**
-  * customer 前端控制器
-  *
-  * @author zhang1591313226@163.com
-  * @since 2021-02-24
-  */
+ * customer 前端控制器
+ *
+ * @author zhang1591313226@163.com
+ * @since 2021-02-24
+ */
 @RestController
 @Slf4j
 @RequestMapping("/customer")
@@ -31,6 +33,7 @@ public class CustomerController {
      */
     @PutMapping("save")
     public R save(@RequestBody Customer customer) {
+        customer.setCreateTime(LocalDateTime.now());
         return R.bool(customerService.save(customer));
     }
 

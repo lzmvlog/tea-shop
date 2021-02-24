@@ -1,0 +1,55 @@
+version: '3.1'
+services:
+  db:
+    restart: always
+    image: mysql
+    environment:
+  TZ: Asia/Shanghai
+    MYSQL_ROOT_PASSWORD: root
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./config:/etc/mysql/conf.d
+      - ./log:/var/log/mysql
+
+  nacos-gateway:
+    restart: always
+    image: tea-shop/nacos-gateway:latest
+    ports:
+      - 8090:8090
+    volumes:
+      - ./data/nacos-gateway:/var/log/nacos-gateway
+
+  shop-goods:
+    restart: always
+    image: tea-shop/shop-goods:latest
+    ports:
+      - 9091:9091
+    volumes:
+      - ./var/log/shop-goods:/var/log/business/goods
+
+  shop-customer:
+    restart: always
+    image: tea-shop/shop-customer:latest
+    ports:
+      - 9092:9092
+    volumes:
+      - ./var/log/shop-customer:/var/log/business/customer
+
+  shop-order:
+    restart: always
+    image: tea-shop/shop-order:latest
+    ports:
+      - 9093:9093
+    volumes:
+     - ./var/log/shop-order:/var/log/business/order
+
+network:
+  default:
+    external:
+        name: mysql

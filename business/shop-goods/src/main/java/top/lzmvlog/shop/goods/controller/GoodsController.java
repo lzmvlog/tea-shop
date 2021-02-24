@@ -9,6 +9,8 @@ import top.lzmvlog.common.result.R;
 import top.lzmvlog.shop.goods.model.Goods;
 import top.lzmvlog.shop.goods.service.GoodsService;
 
+import java.time.LocalDateTime;
+
 /**
   * goods 前端控制器
   *
@@ -31,6 +33,7 @@ public class GoodsController {
      */
     @PutMapping("save")
     public R save(@RequestBody Goods goods) {
+        goods.setCreateTime(LocalDateTime.now());
         return R.bool(goodsService.save(goods));
     }
 

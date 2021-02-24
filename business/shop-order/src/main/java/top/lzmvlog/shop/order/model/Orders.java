@@ -46,4 +46,11 @@ public class Orders extends Model<Orders> {
      * 订单创建时间
      */
     private LocalDateTime createTime;
+
+    /**
+     * 订单是否支付、订单状态
+     *
+     * @see top.lzmvlog.common.enumutil.OrdersPayEnum
+     */
+    private Integer isPay;
 }
