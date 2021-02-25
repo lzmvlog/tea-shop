@@ -3,6 +3,11 @@
 #spring:
 #  application:
 #    name: shop-customer
+#  cloud:
+#    # 使用 Nacos 作为服务注册发现
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
 #  datasource:
 #    url: jdbc:mysql://127.0.0.1:3306/tea-shop?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
 #    username: root
