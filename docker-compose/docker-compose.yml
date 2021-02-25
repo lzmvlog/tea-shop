@@ -23,7 +23,7 @@ services:
     ports:
       - 8090:8090
     volumes:
-      - ./data/nacos-gateway:/var/log/nacos-gateway
+      - ./data/log/nacos-gateway:/var/log/nacos-gateway
 
   shop-goods:
     restart: always
@@ -31,7 +31,7 @@ services:
     ports:
       - 9091:9091
     volumes:
-      - ./var/log/shop-goods:/var/log/business/goods
+      - ./var/log/shop-goods:/var/log/goods
 
   shop-customer:
     restart: always
@@ -39,7 +39,7 @@ services:
     ports:
       - 9092:9092
     volumes:
-      - ./var/log/shop-customer:/var/log/business/customer
+      - ./var/log/shop-customer:/var/log/customer
 
   shop-order:
     restart: always
@@ -47,7 +47,7 @@ services:
     ports:
       - 9093:9093
     volumes:
-     - ./var/log/shop-order:/var/log/business/order
+     - ./var/log/shop-order:/var/log/order
 
 network:
   default:
