@@ -33,6 +33,11 @@ public class Cart extends Model<Cart> {
     private Integer uid;
 
     /**
+     * 商品id
+     */
+    private String goodsId;
+
+    /**
      * 创建时间
      */
     @TableField("create_time")

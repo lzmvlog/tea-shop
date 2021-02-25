@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 25/02/2021 11:36:36
+ Date: 25/02/2021 22:04:46
 */
 
 SET NAMES utf8mb4;
@@ -25,6 +25,7 @@ CREATE TABLE `cart`  (
   `cart_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '购物车id',
   `uid` int(0) NULL DEFAULT NULL COMMENT '用户id',
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
+  `goods_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品id',
   PRIMARY KEY (`cart_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
@@ -61,11 +62,10 @@ CREATE TABLE `goods`  (
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders`  (
   `order_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单id',
-  `uid` int(0) NOT NULL COMMENT '用户id',
-  `goods_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品id',
-  `create_time` datetime(0) NOT NULL COMMENT '创建时间',
-  `order_money` decimal(11, 2) NOT NULL COMMENT '订单金额',
-  `is_pay` bigint(0) NOT NULL COMMENT '是否支付',
+  `uid` int(0) NULL DEFAULT NULL COMMENT '用户id',
+  `goods_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品id',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `order_money` decimal(11, 2) NULL DEFAULT NULL COMMENT '订单金额',
   PRIMARY KEY (`order_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
