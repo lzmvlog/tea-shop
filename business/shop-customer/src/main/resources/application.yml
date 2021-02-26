@@ -8,6 +8,7 @@
 #    nacos:
 #      discovery:
 #        server-addr: 127.0.0.1:8848
+#        namespace: 0b9c48dc-07b7-4615-8749-3617c1071d0e
 #  datasource:
 #    url: jdbc:mysql://127.0.0.1:3306/tea-shop?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
 #    username: root

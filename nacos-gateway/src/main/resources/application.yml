@@ -10,6 +10,7 @@
 #    nacos:
 #      discovery:
 #        server-addr: 127.0.0.1:8848
+#        namespace: 0b9c48dc-07b7-4615-8749-3617c1071d0e
 #        # 发现 Nacos 服务
 #      gateway:
 #        discovery:
@@ -32,10 +33,19 @@
 #        - id: SHOP-CUSTOMER
 #          # 采用 LoadBalanceClient 方式请求，以 lb:// 开头，后面的是注册在 Nacos 上的服务名
 #          uri: lb://shop-customer
+#          predicates:
+#            # Method 方法谓词，这里是匹配 GET 和 POST 请求
+#            - Method=GET,POST,PUT
 #        - id: SHOP-GOODS
 #          uri: lb://shop-goods
+#          predicates:
+#            # Method 方法谓词，这里是匹配 GET 和 POST 请求
+#            - Method=GET,POST,PUT
 #        - id: SHOP-ORDER
-#            uri: lb://shop-order
+#          uri: lb://shop-order
+#          predicates:
+#            # Method 方法谓词，这里是匹配 GET 和 POST 请求
+#            - Method=GET,POST,PUT
 #
 ## 目前无效
 #feign:
