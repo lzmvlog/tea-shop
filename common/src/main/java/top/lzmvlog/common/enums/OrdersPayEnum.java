@@ -1,4 +1,4 @@
-package top.lzmvlog.common.enumutil;
+package top.lzmvlog.common.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

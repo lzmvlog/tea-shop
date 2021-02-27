@@ -2,7 +2,7 @@ package top.lzmvlog.common.result;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import top.lzmvlog.common.constant.CommonConstant;
+import top.lzmvlog.common.constant.SystemConstant;
 
 /**
  * 响应数据结构体
@@ -36,7 +36,7 @@ public class R<T> {
      * @return 数据
      */
     public static <T> R<T> ok(T data) {
-        return new R<T>(CommonConstant.SUCCESS, data);
+        return new R<T>(SystemConstant.SUCCESS, data);
     }
 
     /**
@@ -46,7 +46,7 @@ public class R<T> {
      * @return 信息
      */
     public static <T> R<T> fail(String msg) {
-        return new R<T>(CommonConstant.FAIL, msg);
+        return new R<T>(SystemConstant.FAIL, msg);
     }
 
     /**
@@ -56,8 +56,8 @@ public class R<T> {
      * @return 成功 || 失败
      */
     public static R<Boolean> bool(Boolean bool) {
-        return bool ? new R<Boolean>(CommonConstant.SUCCESS, "") :
-                new R<Boolean>(CommonConstant.FAIL, CommonConstant.FAIL_MSG_ONE);
+        return bool ? new R<Boolean>(SystemConstant.SUCCESS, "") :
+                new R<Boolean>(SystemConstant.FAIL, SystemConstant.FAIL_MSG_ONE);
     }
 
     private R(Integer code, T data) {

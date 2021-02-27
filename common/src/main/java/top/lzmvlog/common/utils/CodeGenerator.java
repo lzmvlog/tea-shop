@@ -1,4 +1,4 @@
-package top.lzmvlog.common.util;
+package top.lzmvlog.common.utils;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;

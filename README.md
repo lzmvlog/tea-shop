@@ -167,8 +167,25 @@ server {
 }
 ```
 
-#### 参与贡献
+#### Git提交规范
+   <b>提交格式：type(scope) : subject</b>
 
-`Shao Jie`
-`chenghao24`
-`AoDIH`
+#####type（必须）commit 的类别
+######1. feat : 新功能
+######2. fix : 修复bug
+######3. docs : 文档改变
+######4. style : 代码格式改变
+######5. refactor : 某个已有功能重构
+######6. perf : 性能优化
+######7. test : 增加测试
+######8. chore : 构建过程或辅助工具的变动
+
+#####scope（可选） 说明 commit 影响的范围
+
+#####subject（必须） commit 的简短描述
+
+
+#### 参与贡献
+[Shao Jie](https://github.com/lzmvlog)
+[chenghao](https://github.com/chenghao24)
+[AoDIH](https://github.com/AoDIH)

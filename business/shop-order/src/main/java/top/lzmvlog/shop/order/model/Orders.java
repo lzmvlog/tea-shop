@@ -50,7 +50,7 @@ public class Orders extends Model<Orders> {
     /**
      * 订单是否支付、订单状态
      *
-     * @see top.lzmvlog.common.enumutil.OrdersPayEnum
+     * @see top.lzmvlog.common.enums.OrdersPayEnum
      */
     private Integer isPay;
 }

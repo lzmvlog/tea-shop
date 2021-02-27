@@ -1,12 +1,12 @@
 package top.lzmvlog.common.constant;
 
 /**
- * 通用常量类
+ * 系统常量类
  *
  * @author chenghao
  * @since 2021-02-24
  */
-public class CommonConstant {
+public class SystemConstant {
 
     // ==============================状态返回值==============================
 

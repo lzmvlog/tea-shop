@@ -1,4 +1,4 @@
-package top.lzmvlog.common.util;
+package top.lzmvlog.common.utils;
 
 /**
  * 字符工具
