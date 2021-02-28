@@ -32,7 +32,7 @@ mybatis-plus 3.3.2
 
 #### 安装教程
 
-1. 安装`nacos`注册中心 用于服务配置 例如：
+安装`nacos`注册中心 用于服务配置 例如：
 
 ```yaml
 # 这里的应用名对应 Nacos Config 中的 Data ID，实际应用名称以配置中心的配置为准
@@ -43,7 +43,17 @@ spring.cloud.nacos.config.file-extension=yaml
 spring.cloud.nacos.config.server-addr=ip:port 
 ```
 
-2. 启动`nacos-getway`用与注册服务，通过网关请求具体业务系统
+启动`nacos-getway`用与注册服务，通过网关请求具体业务系统
+
+#### _自动生成代码_ 
+
+**top.lzmvlog.common.utils.CodeGenerator** 
+   
+需要注意几个参数 
+```java
+1、new GlobalConfig().setAuthor("创建者邮箱");
+2、nwe PackageConfig().setParent("服务包名");
+```
 
 #### 部署说明
 
@@ -143,7 +153,7 @@ jave -jar  xxx.jar
 
 #### 域名配置说明
 
-1. 安装 nginx
+安装 nginx
 
 ```shell
 yum -y install nginx
@@ -170,20 +180,17 @@ server {
 #### Git提交规范
    <b>提交格式：type(scope) : subject</b>
 
-#####type（必须）commit 的类别
-######1. feat : 新功能
-######2. fix : 修复bug
-######3. docs : 文档改变
-######4. style : 代码格式改变
-######5. refactor : 某个已有功能重构
-######6. perf : 性能优化
-######7. test : 增加测试
-######8. chore : 构建过程或辅助工具的变动
-
-#####scope（可选） 说明 commit 影响的范围
-
-#####subject（必须） commit 的简短描述
-
+type（必须）commit 的类别
+1. feat : 新功能
+2. fix : 修复bug
+3. docs : 文档改变
+4. style : 代码格式改变
+5. refactor : 某个已有功能重构
+6. perf : 性能优化
+7. test : 增加测试
+8. chore : 构建过程或辅助工具的变动    
+**scope（可选） 说明 commit 影响的范围**  
+**subject（必须） commit 的简短描述**
 
 #### 参与贡献
 [Shao Jie](https://github.com/lzmvlog)
