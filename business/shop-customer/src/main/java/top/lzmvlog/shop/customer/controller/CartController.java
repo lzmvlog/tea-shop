@@ -12,11 +12,11 @@ import top.lzmvlog.shop.customer.service.CartService;
 import java.time.LocalDateTime;
 
 /**
-  * cart 前端控制器
-  *
-  * @author zhang1591313226@163.com
-  * @since 2021-02-25
-  */
+ * cart 前端控制器
+ *
+ * @author zhang1591313226@163.com
+ * @since 2021-02-25
+ */
 @RestController
 @Slf4j
 @RequestMapping("/cart")
@@ -70,4 +70,26 @@ public class CartController {
         return R.ok(cartService.page(page, Wrappers.<Cart>lambdaQuery(cart)));
     }
 
+    /**
+     * 新增购物车商品
+     *
+     * @param goodsId 商品id
+     * @return
+     */
+    @PostMapping("saveCart")
+    public R saveCart(String goodsId) {
+        return R.ok(cartService.saveCart(goodsId));
+    }
+
+    /**
+     * 查询 orders
+     *
+     * @param cart
+     * @return
+     */
+    @PostMapping("selectMine")
+    public R selectMine(@RequestBody Cart cart, Page<Cart> page) {
+        // TODO:缺少用户信息
+        return R.ok(cartService.page(page, Wrappers.<Cart>lambdaQuery(cart)));
+    }
 }

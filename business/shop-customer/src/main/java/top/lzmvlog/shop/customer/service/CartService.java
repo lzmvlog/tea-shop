@@ -11,4 +11,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface CartService extends IService<Cart> {
 
+    /**
+     * 保存购物车
+     * @param goodsId 商品id
+     * @return
+     */
+    Boolean saveCart(String goodsId);
 }
