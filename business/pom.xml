@@ -15,6 +15,7 @@
         <module>shop-customer</module>
         <module>shop-goods</module>
         <module>shop-order</module>
+        <module>shop-files</module>
     </modules>
 
     <properties>

@@ -49,6 +49,14 @@ services:
     volumes:
      - ./var/log/shop-order:/var/log/order
 
+  shop-files:
+    restart: always
+    image: tea-shop/shop-files:latest
+    ports:
+      - 9094:9094
+    volumes:
+      - ./var/log/shop-customer:/var/log/customer
+
 network:
   default:
     external:

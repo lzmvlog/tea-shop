@@ -12,6 +12,7 @@
    `goods`服务为商品服务   
    `customer`服务为用户服务    
    `order`服务为订单服务
+   `files`服务为文件服务
 
 #### 待实现
 
@@ -135,6 +136,14 @@ services:
       - 9093:9093
     volumes:
      - ./var/log/shop-order:/var/log/order
+       
+  shop-files:
+    restart: always
+    image: tea-shop/shop-files:latest
+    ports:
+       - 9094:9094
+    volumes:
+       - ./var/log/shop-customer:/var/log/customer     
 
 network:
   default:
