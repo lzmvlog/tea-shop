@@ -1,21 +1,54 @@
-server:
-  port: 9094
-spring:
-  application:
-    name: shop-files
-  cloud:
-    # 使用 Nacos 作为服务注册发现
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
-        namespace: 0b9c48dc-07b7-4615-8749-3617c1071d0e
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/tea-shop?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
-    username: root
-    password: Root5683@
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*.mapper
-  type-aliases-package: top.lzmvlog.shop.files.model
+#server:
+#  port: 9094
+#spring:
+#  application:
+#    name: shop-files
+#  cloud:
+#    # 使用 Nacos 作为服务注册发现
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 0b9c48dc-07b7-4615-8749-3617c1071d0e
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/tea-shop?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+#    username: root
+#    password: Root5683@
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/*.mapper
+#  type-aliases-package: top.lzmvlog.shop.files.model
+#
+## 阿里云 oss
+#oss:
+#  access:
+#    key: accesskey
+#  secret:
+#    key: secretkey
+#  bucket:
+#    name: nacos-resoure
+#  endpoint: url
+#  domainName: domainName
+#
+## 七牛云
+#qiniuyun:
+#  access:
+#    key: accesskey
+#  secret:
+#    key: secretkey
+#  bucket:
+#    name: my-vlog
+#  domainName: http://qiniuyun.lzmvlog.top/
+#
+## MINIO 文件服务器 参考地址：http://docs.minio.org.cn/docs/
+#minio:
+#  access:
+#    key: accesskey
+#  secret:
+#    key: secretkey
+#  bucket:
+#    name: my-vlog
+#  endpoint: url
+## 配置上传方式 1、qiniuyun 2、oss 3、minio
+#methodName: qiniuyun
