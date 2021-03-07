@@ -1,0 +1,21 @@
+#server:
+#  port: 8099
+#spring:
+#  application:
+#    name: auth
+#  cloud:
+#    # 使用 Nacos 作为服务注册发现
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        namespace: 0b9c48dc-07b7-4615-8749-3617c1071d0e
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/tea-shop?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+#    username: root
+#    password: Root5683@
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/*.mapper
+#  type-aliases-package: top.lzmvlog.shop.customer.model
