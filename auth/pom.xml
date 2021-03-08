@@ -21,6 +21,13 @@
         <docker.image.suffix>latest</docker.image.suffix>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>auth</finalName>
         <plugins>

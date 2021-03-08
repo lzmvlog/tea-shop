@@ -56,6 +56,14 @@ services:
       - 9094:9094
     volumes:
       - ./var/log/shop-files:/var/log/files
+      -
+  auth:
+    restart: always
+    image: tea-shop/auth:latest
+    ports:
+      - 9094:9094
+    volumes:
+      - ./var/log/auth:/var/log/auth
 
 network:
   default:
