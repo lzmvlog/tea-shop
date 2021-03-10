@@ -3,9 +3,9 @@ package top.lzmvlog.common.utils;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;
-import com.sun.istack.internal.NotNull;
 import top.lzmvlog.common.enums.EncryptEnum;
 
+import javax.validation.constraints.NotNull;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Calendar;
@@ -72,8 +72,9 @@ public class CommonUtil {
         int days = 0;
         while (clOne.compareTo(clTwo) <= 0) {
             if (clOne.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
-                    && clOne.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
+                    && clOne.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
                 days++;
+            }
             clOne.add(Calendar.DAY_OF_MONTH, 1);
         }
         return days;
@@ -149,116 +150,4 @@ public class CommonUtil {
         return strData;
     }
 
-//    /**
-//     * 解析数据生成日志内容
-//     *
-//     * @param operatingType 操作类型 0 保存 1 修改
-//     * @param fields        需要进行判断的字段s
-//     * @param logDto        房源日志重要参数传输层
-//     * @param otherFormat   其他日志格式
-//     * @return 日志内容
-//     */
-//    @SneakyThrows
-//    public static String analysisDataGenerateLogContent(String operatingType, String fields, String logDto, String... otherFormat) {
-//        // 解析日志参数传输层
-//         =JSON.parseObject();
-//        // 解析配置json
-//        HashMap<String, Object> config = StrUtil.isNotBlank(maps.get(HousingResourceConstants.LOG_IMPORTANT_CONFIG)) ?
-//                jsonMapper.readValue(maps.get(HousingResourceConstants.LOG_IMPORTANT_CONFIG), new TypeReference<HashMap<String, Object>>() {
-//                }) : null;
-//        // 解析旧数据json
-//        HashMap<String, Object> oldData = StrUtil.isNotBlank(maps.get(HousingResourceConstants.LOG_IMPORTANT_OLD)) ?
-//                jsonMapper.readValue(maps.get(HousingResourceConstants.LOG_IMPORTANT_OLD), new TypeReference<HashMap<String, Object>>() {
-//                }) : new HashMap<>();
-//        // 解析新数据json
-//        HashMap<String, Object> newData = StrUtil.isNotBlank(maps.get(HousingResourceConstants.LOG_IMPORTANT_NEW)) ?
-//                jsonMapper.readValue(maps.get(HousingResourceConstants.LOG_IMPORTANT_NEW), new TypeReference<HashMap<String, Object>>() {
-//                }) : null;
-//        // 解析回调json
-//        HashMap<String, Object> callback = StrUtil.isNotBlank(maps.get(HousingResourceConstants.LOG_IMPORTANT_CALLBACK)) ?
-//                jsonMapper.readValue(maps.get(HousingResourceConstants.LOG_IMPORTANT_CALLBACK), new TypeReference<HashMap<String, Object>>() {
-//                }) : null;
-//        if (ObjectUtil.isNull(config) || config.isEmpty() || ObjectUtil.isNull(newData) || newData.isEmpty()) {
-//            return "";
-//        }
-//        StringJoiner logContent = new StringJoiner(";");
-//        // 分割字段
-//        List<String> fieldList = StrUtil.splitTrim(fields, StrUtil.COMMA);
-//        // 新增日志内容
-//        if (HousingResourceConstants.SAVE_INFO.equals(operatingType)) {
-//            // 判断日志格式：处理某些日志需要特殊的日志格式
-//            String strFormat = ObjectUtil.isNotEmpty(otherFormat) ? otherFormat[0] : HousingLogConstants.HOUSING_XZ_FORMAT;
-//            if (!fieldList.isEmpty()) {
-//                // 有固定的field
-//                fieldList.forEach(field -> {
-//                    String configFieldData = Convert.toStr(config.get(field), "");
-//                    if (StrUtil.isNotBlank(configFieldData)) {
-//                        String newFieldData = Convert.toStr(newData.get(field), "");
-//                        if (StrUtil.isNotBlank(newFieldData)) {
-//                            if (StrUtil.containsAny(field, Convert.toStrArray(HousingResourceConstants.FILE_FIELDS))) {
-//                                logContent.add(StrUtil.format(strFormat, config.get(field), StrUtil.format(HousingLogConstants.FILE_SPECIAL_FORMAT, HousingLogConstants.DEFAULT_FUNCTION_NAME, newFieldData)));
-//                            } else {
-//                                logContent.add(StrUtil.format(strFormat, config.get(field), newFieldData));
-//                            }
-//                        }
-//                    }
-//                });
-//            } else {
-//                // 无固定的field，解析config
-//                config.forEach((k, v) -> {
-//                    String newFieldData = Convert.toStr(newData.get(k), "");
-//                    if (StrUtil.isNotBlank(newFieldData)) {
-//                        if (ObjectUtil.isNotNull(callback) && !callback.isEmpty()) {
-//                            // 获取callback function
-//                            logContent.add(StrUtil.format(strFormat, v, StrUtil.format(HousingLogConstants.FILE_SPECIAL_FORMAT, callback.get(k), newFieldData)));
-//                        } else {
-//                            logContent.add(StrUtil.format(strFormat, v, newFieldData));
-//                        }
-//                    }
-//                });
-//            }
-//        }
-//        // 修改日志内容
-//        else {
-//            // 判断日志格式：处理某些日志需要特殊的日志格式
-//            String strFormat = ObjectUtil.isNotEmpty(otherFormat) ? otherFormat[0] : HousingLogConstants.HOUSING_XG_FORMAT;
-//            if (!fieldList.isEmpty()) {
-//                // 有固定的field
-//                fieldList.forEach(field -> {
-//                    String configFieldData = Convert.toStr(config.get(field), "");
-//                    if (StrUtil.isNotBlank(configFieldData)) {
-//                        String newFieldData = Convert.toStr(newData.get(field), "");
-//                        String oldFieldData = Convert.toStr(oldData.get(field), "");
-//                        if (!newFieldData.equals(oldFieldData)) {
-//                            if (StrUtil.containsAny(field, Convert.toStrArray(HousingResourceConstants.FILE_FIELDS))) {
-//                                logContent.add(StrUtil.format(strFormat, configFieldData,
-//                                        StrUtil.format(HousingLogConstants.FILE_SPECIAL_FORMAT, HousingLogConstants.DEFAULT_FUNCTION_NAME, oldFieldData),
-//                                        StrUtil.format(HousingLogConstants.FILE_SPECIAL_FORMAT, HousingLogConstants.DEFAULT_FUNCTION_NAME, newFieldData)));
-//                            } else {
-//                                logContent.add(StrUtil.format(strFormat, configFieldData, oldFieldData, newFieldData));
-//                            }
-//                        }
-//                    }
-//                });
-//            } else {
-//                // 解决oldData空数据的问题
-//                boolean oldStatus = ObjectUtil.isNull(oldData);
-//                // 无固定的field，解析config
-//                config.forEach((k, v) -> {
-//                    String newFieldData = Convert.toStr(newData.get(k), "");
-//                    String oldFieldData = Convert.toStr(oldData.get(k), "");
-//                    if (oldStatus || (!newFieldData.equals(oldFieldData))) {
-//                        if (ObjectUtil.isNotNull(callback) && !callback.isEmpty()) {
-//                            logContent.add(StrUtil.format(strFormat, v,
-//                                    StrUtil.format(HousingLogConstants.FILE_SPECIAL_FORMAT, callback.get(k), oldStatus ? "" : oldFieldData),
-//                                    StrUtil.format(HousingLogConstants.FILE_SPECIAL_FORMAT, callback.get(k), newFieldData)));
-//                        } else {
-//                            logContent.add(StrUtil.format(strFormat, v, oldStatus ? "" : oldFieldData, newFieldData));
-//                        }
-//                    }
-//                });
-//            }
-//        }
-//        return logContent.toString();
-//    }
 }

@@ -60,12 +60,12 @@ public class R<T> {
                 new R<Boolean>(SystemConstant.FAIL, SystemConstant.FAIL_MSG_ONE);
     }
 
-    private R(Integer code, T data) {
+    public R(Integer code, T data) {
         this.code = code;
         this.data = data;
     }
 
-    private R(Integer code, String msg) {
+    public R(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }

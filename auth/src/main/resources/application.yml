@@ -19,3 +19,7 @@
 #mybatis-plus:
 #  mapper-locations: classpath:/mapper/*.mapper
 #  type-aliases-package: top.lzmvlog.shop.customer.model
+
+# 认证密钥
+auth:
+  signingKey: YXV0aG9yaXR5
