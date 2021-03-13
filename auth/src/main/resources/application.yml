@@ -1,5 +1,5 @@
 #server:
-#  port: 8099
+#  port: 9095
 #spring:
 #  application:
 #    name: auth
@@ -21,5 +21,5 @@
 #  type-aliases-package: top.lzmvlog.shop.customer.model
 
 # 认证密钥
-auth:
-  signingKey: YXV0aG9yaXR5
+#auth:
+#  signingKey: YXV0aG9yaXR5

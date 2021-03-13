@@ -61,7 +61,7 @@ services:
     restart: always
     image: tea-shop/auth:latest
     ports:
-      - 9094:9094
+      - 9095:9095
     volumes:
       - ./var/log/auth:/var/log/auth
 
