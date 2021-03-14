@@ -11,10 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.lzmvlog.common.key.RedisKey;
 import top.lzmvlog.common.result.R;
-import top.lzmvlog.shop.auth.vo.TokenVo;
+import top.lzmvlog.shop.auth.fegin.CustomerService;
+import top.lzmvlog.shop.auth.util.JwtUtil;
+import top.lzmvlog.shop.customer.model.vo.Login;
+import top.lzmvlog.shop.customer.model.vo.TokenVo;
 import top.lzmvlog.shop.customer.model.Customer;
 
 import java.text.MessageFormat;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -30,8 +34,8 @@ public class AuthTokenController {
     /**
      * redis 的 token 过期时间
      */
-    @Value("${spring.redis.token-timeout}")
-    private String tokenTimeOut;
+    @Value("${auth.timeout}")
+    private Long tokenTimeOut;
 
     /**
      * redisTemplate
@@ -39,26 +43,36 @@ public class AuthTokenController {
     @Autowired
     public StringRedisTemplate redisTemplate;
 
+    @Autowired
+    public CustomerService customerService;
+
+    @Autowired
+    public JwtUtil jwtUtil;
+
     /**
      * 签发 token
      *
-     * @param customer 用户信息
+     * @param login 用户信息
      * @return
      */
     @PostMapping("/token")
-    public R getToken(Customer customer) {
+    public R getToken(Login login) {
         ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
-        String key = MessageFormat.format(RedisKey.ACCESSTOKEN, customer.getAccount());
+        String key = MessageFormat.format(RedisKey.ACCESSTOKEN, login.getAccount());
         String accessToken = valueOperations.get(key);
         if (Objects.nonNull(accessToken)) {
             return new R(HttpStatus.HTTP_OK, JSON.parseObject(accessToken, TokenVo.class));
         }
         // 读取用户信息
-//        TokenVo tokenVo = userService.selectUser(use);
-
+        Customer customer = customerService.selectCustomer(login);
         TokenVo tokenVo = new TokenVo();
+        tokenVo.setAccount(customer.getAccount());
+        tokenVo.setToken(jwtUtil.createToken(customer.getAccount()));
+        tokenVo.setCurrentTime(LocalDateTime.now());
+        tokenVo.setExpiration(LocalDateTime.now().minusSeconds(tokenTimeOut));
+
         // 将获取的 token 存放在 redis 中
-        valueOperations.set(key, tokenVo.toString(), Long.valueOf(tokenTimeOut), TimeUnit.SECONDS);
+        valueOperations.set(key, tokenVo.toString(), tokenTimeOut, TimeUnit.SECONDS);
         return new R(HttpStatus.HTTP_OK, tokenVo);
     }
 

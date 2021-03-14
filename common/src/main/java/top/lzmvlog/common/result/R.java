@@ -40,6 +40,13 @@ public class R<T> {
     }
 
     /**
+     * 成功响应数据
+     */
+    public static <T> R<T> ok() {
+        return new R<T>(SystemConstant.SUCCESS);
+    }
+
+    /**
      * 失败响应信息
      *
      * @param msg 需要返回的信息
@@ -56,8 +63,12 @@ public class R<T> {
      * @return 成功 || 失败
      */
     public static R<Boolean> bool(Boolean bool) {
-        return bool ? new R<Boolean>(SystemConstant.SUCCESS, "") :
+        return bool ? new R<Boolean>(SystemConstant.SUCCESS, SystemConstant.SUCCESS_MSG_ONE) :
                 new R<Boolean>(SystemConstant.FAIL, SystemConstant.FAIL_MSG_ONE);
+    }
+
+    public R(Integer code) {
+        this.code = code;
     }
 
     public R(Integer code, T data) {

@@ -1,14 +1,11 @@
 package top.lzmvlog.shop.auth.util;
 
 import cn.hutool.core.date.DateTime;
-import cn.hutool.core.util.IdUtil;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
 
 /**
  * @author ShaoJie zhang1591313226@163.com
@@ -30,14 +27,13 @@ public class JwtUtil {
      * <p>
      * setClaims() 与 setSubject() 冲突所以不设置主体信息
      *
-     * @param claim 用户权限 map
+     * @param account 用户id
      * @return String 生成的 token
      */
-    public String createToken(Map<String, Object> claim) {
+    public String createToken(String account) {
         return Jwts.builder()
-                // 设置唯一的 ida
-                .setId(IdUtil.simpleUUID())
-                .setClaims(claim)
+                // 设置唯一的 id
+                .setId(account)
                 // 设置 token 签发的时间
                 .setIssuedAt(new DateTime())
                 // 设置签名 使用HS256算法，并设置SecretKey(字符串)  签名算法和秘钥

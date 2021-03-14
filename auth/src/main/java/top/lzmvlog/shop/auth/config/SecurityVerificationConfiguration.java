@@ -80,8 +80,6 @@ public class SecurityVerificationConfiguration extends WebSecurityConfigurerAdap
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                // 授权地址不需要验证
-                .antMatchers("/auth/token").permitAll()
                 // 其余的都需要校验
                 .anyRequest().authenticated()
                 .and()

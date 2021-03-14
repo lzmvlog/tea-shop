@@ -23,7 +23,7 @@ public class Customer extends Model<Customer> {
     /**
      * 用户id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.INPUT)
     private Integer uid;
 
     /**
@@ -45,6 +45,16 @@ public class Customer extends Model<Customer> {
      * 微信的openid
      */
     private String wxOpenid;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 电话
+     */
+    private String iphone;
 
     /**
      * 创建时间

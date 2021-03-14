@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import top.lzmvlog.common.result.R;
 import top.lzmvlog.shop.customer.model.Customer;
+import top.lzmvlog.shop.customer.model.vo.Login;
+import top.lzmvlog.shop.customer.model.vo.Register;
 import top.lzmvlog.shop.customer.service.CustomerService;
 
 import java.time.LocalDateTime;
@@ -68,6 +70,30 @@ public class CustomerController {
     @PostMapping("select")
     public R select(@RequestBody Customer customer, Page<Customer> page) {
         return R.ok(customerService.page(page, Wrappers.<Customer>lambdaQuery(customer)));
+    }
+
+    /**
+     * 注册
+     *
+     * @param register 注册用户信息
+     * @return
+     * @see Register
+     */
+    @PostMapping("register")
+    public R registered(@RequestBody Register register) {
+        return R.bool(customerService.registered(register));
+    }
+
+    /**
+     * 登录
+     *
+     * @param login
+     * @return
+     * @see Login
+     */
+    @PostMapping
+    public R login(Login login) {
+        return R.ok(customerService.login(login));
     }
 
 }

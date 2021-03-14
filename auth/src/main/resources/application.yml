@@ -15,11 +15,14 @@
 #    password: Root5683@
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    driver-class-name: com.mysql.cj.jdbc.Driver
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    password:
+#    timeout: 1000
 #
-#mybatis-plus:
-#  mapper-locations: classpath:/mapper/*.mapper
-#  type-aliases-package: top.lzmvlog.shop.customer.model
-
-# 认证密钥
+##认证密钥
 #auth:
 #  signingKey: YXV0aG9yaXR5
+#  timeout: 7200

@@ -1,4 +1,4 @@
-package top.lzmvlog.shop.auth.vo;
+package top.lzmvlog.shop.customer.model.vo;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * @author ShaoJie zhang1591313226@163.com
@@ -29,13 +28,13 @@ public class TokenVo {
     /**
      * 用户名称
      */
-    private String name;
+    private String account;
 
     /**
      * 过期时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date expiration;
+    private LocalDateTime expiration;
 
     /**
      * 登录时间
