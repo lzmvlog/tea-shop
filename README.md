@@ -1,10 +1,10 @@
 # tea-shop
 
-#### 介绍
+### 介绍
 
 茶叶商城 采用微服务架构设计实现商城系统 提升用户精致化消费体验
 
-#### 软件架构
+## 软件架构
 
 1. `nacos-getway`网关
 2. `common`相关共同依赖
@@ -21,7 +21,7 @@
 3. 文件服务
 4. 用户服务
 
-#### 使用说明
+## 使用说明
 
 依赖版本
 
@@ -31,7 +31,7 @@ SpringCloud Greenwich.SR3
 mybatis-plus 3.3.2
 ```
 
-#### 安装教程
+### 安装教程
 
 安装`nacos`注册中心 用于服务配置 例如：
 
@@ -46,21 +46,21 @@ spring.cloud.nacos.config.server-addr=ip:port
 
 启动`nacos-getway`用与注册服务，通过网关请求具体业务系统
 
-#### _自动生成代码_ 
+### _自动生成代码_ 
 
 **top.lzmvlog.common.utils.CodeGenerator** 
    
 需要注意几个参数 
-```java
+```
 1、new GlobalConfig().setAuthor("创建者邮箱");
 2、nwe PackageConfig().setParent("服务包名");
 ```
 
-#### 部署说明
+### 部署说明
 
-##### docker 部署
+#### docker 部署
 
-##### docker-compose 部署
+#### docker-compose 部署
 安装docker-compose
 ```shell
 wget https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m) -O /usr/local/bin/docker-compose
