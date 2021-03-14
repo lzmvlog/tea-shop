@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.lzmvlog.common.key.RedisKey;
 import top.lzmvlog.common.result.R;
-import top.lzmvlog.shop.auth.fegin.CustomerService;
+import top.lzmvlog.shop.auth.feign.CustomerFeignService;
 import top.lzmvlog.shop.auth.util.JwtUtil;
 import top.lzmvlog.shop.customer.model.vo.Login;
 import top.lzmvlog.shop.customer.model.vo.TokenVo;
@@ -44,7 +45,7 @@ public class AuthTokenController {
     public StringRedisTemplate redisTemplate;
 
     @Autowired
-    public CustomerService customerService;
+    public CustomerFeignService customerFeignService;
 
     @Autowired
     public JwtUtil jwtUtil;
@@ -56,7 +57,7 @@ public class AuthTokenController {
      * @return
      */
     @PostMapping("/token")
-    public R getToken(Login login) {
+    public R getToken(@RequestBody Login login) {
         ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
         String key = MessageFormat.format(RedisKey.ACCESSTOKEN, login.getAccount());
         String accessToken = valueOperations.get(key);
@@ -64,7 +65,7 @@ public class AuthTokenController {
             return new R(HttpStatus.HTTP_OK, JSON.parseObject(accessToken, TokenVo.class));
         }
         // 读取用户信息
-        Customer customer = customerService.selectCustomer(login);
+        Customer customer = customerFeignService.selectCustomer(login);
         TokenVo tokenVo = new TokenVo();
         tokenVo.setAccount(customer.getAccount());
         tokenVo.setToken(jwtUtil.createToken(customer.getAccount()));

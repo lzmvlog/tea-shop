@@ -91,8 +91,8 @@ public class CustomerController {
      * @return
      * @see Login
      */
-    @PostMapping
-    public R login(Login login) {
+    @PostMapping("login")
+    public R login(@RequestBody Login login) {
         return R.ok(customerService.login(login));
     }
 

@@ -1,8 +1,8 @@
-package top.lzmvlog.shop.auth.fegin;
+package top.lzmvlog.shop.auth.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import top.lzmvlog.shop.customer.model.Customer;
 import top.lzmvlog.shop.customer.model.vo.Login;
 
@@ -11,9 +11,8 @@ import top.lzmvlog.shop.customer.model.vo.Login;
  * @Date 2021年03月14日 14:29
  * @Description:
  */
-@Service
 @FeignClient(name = "shop-customer")
-public interface CustomerService {
+public interface CustomerFeignService {
 
     /**
      * 查询用户信息
@@ -23,5 +22,5 @@ public interface CustomerService {
      * @see Login
      */
     @PostMapping("/customer/login")
-    Customer selectCustomer(Login login);
+    Customer selectCustomer(@RequestBody Login login);
 }

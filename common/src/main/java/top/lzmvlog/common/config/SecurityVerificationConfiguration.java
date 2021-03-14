@@ -28,7 +28,8 @@
 //        http
 //                .authorizeRequests()
 //                // 授权地址不需要验证
-//                .antMatchers("/auth/auth/token").permitAll();
+//                .antMatchers("/auth/token").permitAll()
+//                .antMatchers("/customer/register").permitAll();
 //    }
 //
 //}
