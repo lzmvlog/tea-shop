@@ -36,14 +36,14 @@ public class R<T> {
      * @return 数据
      */
     public static <T> R<T> ok(T data) {
-        return new R<T>(SystemConstant.SUCCESS, data);
+        return new R<T>(SystemConstant.SUCCESS, data, SystemConstant.SUCCESS_MSG);
     }
 
     /**
      * 成功响应数据
      */
     public static <T> R<T> ok() {
-        return new R<T>(SystemConstant.SUCCESS);
+        return new R<T>(SystemConstant.SUCCESS, SystemConstant.SUCCESS_MSG);
     }
 
     /**
@@ -63,7 +63,7 @@ public class R<T> {
      * @return 成功 || 失败
      */
     public static R<Boolean> bool(Boolean bool) {
-        return bool ? new R<Boolean>(SystemConstant.SUCCESS, SystemConstant.SUCCESS_MSG_ONE) :
+        return bool ? new R<Boolean>(SystemConstant.SUCCESS, SystemConstant.SUCCESS_MSG) :
                 new R<Boolean>(SystemConstant.FAIL, SystemConstant.FAIL_MSG_ONE);
     }
 
@@ -78,6 +78,12 @@ public class R<T> {
 
     public R(Integer code, String msg) {
         this.code = code;
+        this.msg = msg;
+    }
+
+    public R(Integer code, T data, String msg) {
+        this.code = code;
+        this.data = data;
         this.msg = msg;
     }
 }

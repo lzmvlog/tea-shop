@@ -1,6 +1,5 @@
 package top.lzmvlog.shop.auth.controller;
 
-import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,9 +13,9 @@ import top.lzmvlog.common.key.RedisKey;
 import top.lzmvlog.common.result.R;
 import top.lzmvlog.shop.auth.feign.CustomerFeignService;
 import top.lzmvlog.shop.auth.util.JwtUtil;
+import top.lzmvlog.shop.customer.model.Customer;
 import top.lzmvlog.shop.customer.model.vo.Login;
 import top.lzmvlog.shop.customer.model.vo.TokenVo;
-import top.lzmvlog.shop.customer.model.Customer;
 
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
@@ -62,7 +61,7 @@ public class AuthTokenController {
         String key = MessageFormat.format(RedisKey.ACCESSTOKEN, login.getAccount());
         String accessToken = valueOperations.get(key);
         if (Objects.nonNull(accessToken)) {
-            return new R(HttpStatus.HTTP_OK, JSON.parseObject(accessToken, TokenVo.class));
+            return R.ok(JSON.parseObject(accessToken, TokenVo.class));
         }
         // 读取用户信息
         Customer customer = customerFeignService.selectCustomer(login);
@@ -74,7 +73,7 @@ public class AuthTokenController {
 
         // 将获取的 token 存放在 redis 中
         valueOperations.set(key, tokenVo.toString(), tokenTimeOut, TimeUnit.SECONDS);
-        return new R(HttpStatus.HTTP_OK, tokenVo);
+        return R.ok(tokenVo);
     }
 
 }

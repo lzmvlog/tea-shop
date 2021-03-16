@@ -24,15 +24,18 @@ public class SystemConstant {
     // ==============================消息返回值==============================
 
     /**
+     * 消息返回值：成功
+     */
+    public static final String SUCCESS_MSG = "SUCCESS";
+
+    /**
      * 消息返回值：失败
      */
-    public static final String SUCCESS_MSG_ONE = "SUCCESS";
+    public static final String FAIL_MSG = "SUCCESS";
 
     /**
      * 消息返回值：失败
      */
     public static final String FAIL_MSG_ONE = "操作失败，请重试！";
-
-
 
 }
