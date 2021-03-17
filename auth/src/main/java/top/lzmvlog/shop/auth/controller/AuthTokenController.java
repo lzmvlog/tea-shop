@@ -57,17 +57,18 @@ public class AuthTokenController {
      */
     @PostMapping("/token")
     public R getToken(@RequestBody Login login) {
-        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
-        String key = MessageFormat.format(RedisKey.ACCESSTOKEN, login.getAccount());
-        String accessToken = valueOperations.get(key);
-        if (Objects.nonNull(accessToken)) {
-            return R.ok(JSON.parseObject(accessToken, TokenVo.class));
-        }
         // 读取用户信息
         Customer customer = customerFeignService.selectCustomer(login);
         TokenVo tokenVo = new TokenVo();
         tokenVo.setAccount(customer.getAccount());
-        tokenVo.setToken(jwtUtil.createToken(customer.getAccount()));
+        String token = jwtUtil.createToken(customer.getAccount());
+        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+        String key = MessageFormat.format(RedisKey.ACCESSTOKEN, token);
+        String accessToken = valueOperations.get(key);
+        if (Objects.nonNull(accessToken)) {
+            return R.ok(JSON.parseObject(accessToken, TokenVo.class));
+        }
+        tokenVo.setToken(token);
         tokenVo.setCurrentTime(LocalDateTime.now());
         tokenVo.setExpiration(LocalDateTime.now().minusSeconds(tokenTimeOut));
 

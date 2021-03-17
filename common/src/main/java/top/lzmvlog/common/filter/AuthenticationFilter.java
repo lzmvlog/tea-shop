@@ -1,20 +1,21 @@
-package top.lzmvlog.shop.auth.filter;
+package top.lzmvlog.common.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import top.lzmvlog.shop.auth.config.TokenProvider;
-import top.lzmvlog.shop.auth.util.JwtUtil;
+import top.lzmvlog.common.key.RedisKey;
+import top.lzmvlog.common.utils.StringUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.MessageFormat;
 
 /**
  * @author ShaoJie zhang1591313226@163.com
@@ -23,17 +24,13 @@ import java.io.IOException;
  */
 @Component
 @Slf4j
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+public class AuthenticationFilter extends OncePerRequestFilter {
 
+    /**
+     * redisTemplate
+     */
     @Autowired
-    public JwtUtil jwtUtil;
-
-    @Autowired
-    private TokenProvider tokenProvider;
-
-    public JwtAuthenticationFilter(TokenProvider tokenProvider) {
-        this.tokenProvider = tokenProvider;
-    }
+    public StringRedisTemplate redisTemplate;
 
     /**
      * 与{@code doFilter}的合同相同，但保证在单个请求线程中每个请求仅被调用一次。
@@ -53,8 +50,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (token == null) {
                 throw new RuntimeException("请先进行认证后访问");
             }
-            Authentication authentication = tokenProvider.getAuthentication(token);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+            String key = MessageFormat.format(RedisKey.ACCESSTOKEN, token);
+            String accessToken = valueOperations.get(key);
+            if (StringUtil.isEmpty(accessToken)) {
+                throw new RuntimeException("accessToken -- 不存在");
+            }
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

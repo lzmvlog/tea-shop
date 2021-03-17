@@ -31,7 +31,7 @@ public class SystemConstant {
     /**
      * 消息返回值：失败
      */
-    public static final String FAIL_MSG = "SUCCESS";
+    public static final String FAIL_MSG = "FAIL";
 
     /**
      * 消息返回值：失败
