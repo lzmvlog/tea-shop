@@ -22,6 +22,13 @@
 #    #        port: 8721
 #    #        dashboard: localhost:8080
 #    # 路由网关配置
+#  # reids 配置
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    password:
+#    timeout: 1000
 #    gateway:
 #      # 设置与服务注册发现组件结合，这样可以采用服务名的路由策略
 #      discovery:
@@ -46,7 +53,6 @@
 #          predicates:
 #            # Method 方法谓词，这里是匹配 GET 和 POST 请求
 #            - Method=GET,POST,PUT
-#
 ## 目前无效
 #feign:
 #  sentinel:
