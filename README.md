@@ -14,7 +14,7 @@
    `order`服务为订单服务    
    `files`服务为文件服务
 
-   ![架构.jpg](./doc/img/架构.jpg)
+   ![doc/img/架构.jpg](doc/img/架构.png)
 
 
 #### 待实现
