@@ -3,7 +3,7 @@ package top.lzmvlog.shop.order.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import top.lzmvlog.shop.order.mapper.OrdersMapper;
-import top.lzmvlog.shop.order.model.Orders;
+import top.lzmvlog.common.model.order.Orders;
 import top.lzmvlog.shop.order.service.OrdersService;
 
 /**

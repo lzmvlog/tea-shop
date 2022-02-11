@@ -1,7 +1,7 @@
 package top.lzmvlog.shop.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import top.lzmvlog.shop.order.model.Orders;
+import top.lzmvlog.common.model.order.Orders;
 
 /**
  * order 服务类

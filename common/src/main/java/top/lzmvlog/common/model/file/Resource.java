@@ -1,43 +1,48 @@
-package top.lzmvlog.shop.customer.model;
+package top.lzmvlog.common.model.file;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 
 /**
- * cart 购物车
+ * resource
  *
  * @author zhang1591313226@163.com
- * @since 2021-02-25
+ * @since 2021-03-06
  */
 @Data
-@TableName("cart")
-@Accessors(chain = true)
-public class Cart extends Model<Cart> {
+@TableName("resource")
+public class Resource extends Model<Resource> {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 购物车id
+     * 文件id
      */
-    @TableId("cart_id")
-    private String cartId;
+    @TableId("resource_id")
+    private String resourceId;
 
     /**
-     * 用户id
+     * 文件名称
      */
-    @TableField("uid")
-    private Integer uid;
+    @TableField("file_name")
+    private String fileName;
 
     /**
-     * 商品id
+     * 文件存储路径
      */
-    private String goodsId;
+    @TableField("url")
+    private String url;
+
+    /**
+     * 文件类型
+     */
+    @TableField("type")
+    private String type;
 
     /**
      * 创建时间

@@ -1,4 +1,4 @@
-package top.lzmvlog.shop.customer.model;
+package top.lzmvlog.common.model.customer;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

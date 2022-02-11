@@ -1,4 +1,4 @@
-package top.lzmvlog.shop.customer.model.vo;
+package top.lzmvlog.common.model.customer.vo;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonFormat;

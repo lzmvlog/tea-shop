@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.*;
 import top.lzmvlog.common.result.R;
-import top.lzmvlog.shop.goods.model.Goods;
+import top.lzmvlog.common.model.goods.Goods;
 import top.lzmvlog.shop.goods.service.GoodsService;
 
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
 package top.lzmvlog.shop.goods.service.impl;
 
-import top.lzmvlog.shop.goods.model.Goods;
+import top.lzmvlog.common.model.goods.Goods;
 import top.lzmvlog.shop.goods.mapper.GoodsMapper;
 import top.lzmvlog.shop.goods.service.GoodsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

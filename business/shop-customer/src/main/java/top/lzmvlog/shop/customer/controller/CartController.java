@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import top.lzmvlog.common.model.customer.Cart;
 import top.lzmvlog.common.result.R;
-import top.lzmvlog.shop.customer.model.Cart;
 import top.lzmvlog.shop.customer.service.CartService;
 
 import java.time.LocalDateTime;

@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import top.lzmvlog.common.model.customer.Customer;
+import top.lzmvlog.common.model.customer.vo.Login;
+import top.lzmvlog.common.model.customer.vo.Register;
 import top.lzmvlog.shop.customer.mapper.CustomerMapper;
-import top.lzmvlog.shop.customer.model.Customer;
-import top.lzmvlog.shop.customer.model.vo.Login;
-import top.lzmvlog.shop.customer.model.vo.Register;
 import top.lzmvlog.shop.customer.service.CustomerService;
 
 /**
@@ -21,6 +21,11 @@ import top.lzmvlog.shop.customer.service.CustomerService;
 @Service
 public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> implements CustomerService {
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private CustomerMapper customerMapper;
+
     /**
      * 密码加密
      *
@@ -30,12 +35,6 @@ public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> i
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Autowired
-    private CustomerMapper customerMapper;
 
     /**
      * 用户注册

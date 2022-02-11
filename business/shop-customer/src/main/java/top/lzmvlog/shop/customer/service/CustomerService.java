@@ -1,9 +1,9 @@
 package top.lzmvlog.shop.customer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import top.lzmvlog.shop.customer.model.Customer;
-import top.lzmvlog.shop.customer.model.vo.Login;
-import top.lzmvlog.shop.customer.model.vo.Register;
+import top.lzmvlog.common.model.customer.Customer;
+import top.lzmvlog.common.model.customer.vo.Login;
+import top.lzmvlog.common.model.customer.vo.Register;
 
 /**
  * customer 服务类

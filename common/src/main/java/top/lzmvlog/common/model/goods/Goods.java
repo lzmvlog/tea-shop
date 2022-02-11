@@ -1,4 +1,4 @@
-package top.lzmvlog.shop.order.model;
+package top.lzmvlog.common.model.goods;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -10,47 +10,40 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 订单
+ * goods
  *
  * @author zhang1591313226@163.com
- * @since 2021-02-24 10:14
+ * @since 2021-02-24
  */
 @Data
-@TableName("orders")
-public class Orders extends Model<Orders> {
+@TableName("goods")
+public class Goods extends Model<Goods> {
 
     private static final long serialVersionUID = 1L;
 
     /**
-     * 订单id
+     * 商品id
      */
     @TableId(type = IdType.ASSIGN_UUID)
-    private String orderId;
-
-    /**
-     * 用户id
-     */
-    private Integer uid;
-
-    /**
-     * 订单商品id
-     */
     private String goodsId;
 
     /**
-     * 订单金额
+     * 商品名称
      */
-    private BigDecimal orderMoney;
+    private String goodsName;
 
     /**
-     * 订单创建时间
+     * 商品图片
+     */
+    private String goodsImg;
+
+    /**
+     * 商品价格
+     */
+    private BigDecimal goodsMoney;
+
+    /**
+     * 创建时间
      */
     private LocalDateTime createTime;
-
-    /**
-     * 订单是否支付、订单状态
-     *
-     * @see top.lzmvlog.common.enums.OrdersPayEnum
-     */
-    private Integer isPay;
 }

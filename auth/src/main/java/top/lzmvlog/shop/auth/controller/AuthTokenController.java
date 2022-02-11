@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.lzmvlog.common.key.RedisKey;
+import top.lzmvlog.common.model.customer.Customer;
+import top.lzmvlog.common.model.customer.vo.Login;
+import top.lzmvlog.common.model.customer.vo.TokenVo;
 import top.lzmvlog.common.result.R;
 import top.lzmvlog.shop.auth.feign.CustomerFeignService;
 import top.lzmvlog.shop.auth.util.JwtUtil;
-import top.lzmvlog.shop.customer.model.Customer;
-import top.lzmvlog.shop.customer.model.vo.Login;
-import top.lzmvlog.shop.customer.model.vo.TokenVo;
 
 import java.text.MessageFormat;
 import java.time.LocalDateTime;

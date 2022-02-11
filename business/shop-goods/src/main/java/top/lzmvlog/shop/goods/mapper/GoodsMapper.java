@@ -1,6 +1,6 @@
 package top.lzmvlog.shop.goods.mapper;
 
-import top.lzmvlog.shop.goods.model.Goods;
+import top.lzmvlog.common.model.goods.Goods;
 import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 

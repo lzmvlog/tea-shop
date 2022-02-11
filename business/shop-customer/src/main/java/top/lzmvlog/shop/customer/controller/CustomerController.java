@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import top.lzmvlog.common.model.customer.Customer;
+import top.lzmvlog.common.model.customer.vo.Login;
+import top.lzmvlog.common.model.customer.vo.Register;
 import top.lzmvlog.common.result.R;
-import top.lzmvlog.shop.customer.model.Customer;
-import top.lzmvlog.shop.customer.model.vo.Login;
-import top.lzmvlog.shop.customer.model.vo.Register;
 import top.lzmvlog.shop.customer.service.CustomerService;
 
 import java.time.LocalDateTime;
